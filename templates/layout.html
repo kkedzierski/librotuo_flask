@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if title %}
+        <title>Librotuo - {{  title  }}</title>
+    {% else %}
+        <title>Librotuo</title>
+    {% endif %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/51e15fc293.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <header>
+                <!-- header -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                        <img id="navLogo" src="/static/images/logo_orginal.png" alt="Logo"> 
+                    </a>
+                    <a class="navbar-brand" href="/">Librotuo</a>
+                </div>
+                <!-- Items -->
+                <div class="collapse navbar-collapse" id="topNavBar">
+                    <ul class="nav navbar-nav">
+                        <li class="">
+                            <a href="/">
+                                <span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp; Books
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li class="">
+                            <a href="/about">
+                                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp; About
+                            </a>
+                        </li>
+                        
+                    </ul>
+
+                    <ul class="nav navbar-nav">
+                        <li class="">
+                            <form class="search-form">
+                                <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+                                    <div class="input-group">
+                                      <input type="search" placeholder="Search your book" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+                                      <div class="input-group-append">
+                                        <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+                                      </div>
+                                    </div>
+                                  </div>
+                              </form>
+                        </li>
+                        
+                    </ul>
+
+                    <!-- Right menu -->
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="">
+                            <a href="/">
+                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Login
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="">
+                            <a href="/">
+                                <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp; Sign up
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+        </div>
+    </nav>
+
+<main role="main" class="container">
+    <div class="row">
+        <div class="col-md-8"> 
+            {% block content %}{% endblock %}
+        </div>
+        <div class="col-md-4">
+            <h3>Filter search</h3>
+            <p class="text-muted">Search your book using filters</p>
+                <form class="filter-search-form">
+                    <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+                        <div class="input-group">
+                        <input type="search" placeholder="Search by Title" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+                        <div class="input-group-append">
+                            <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+                        </div>
+                        </div>
+                    </div>
+                </form>
+                <form class="filter-search-form">
+                    <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+                        <div class="input-group">
+                          <input type="search" placeholder="Search by Author" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+                          <div class="input-group-append">
+                            <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                  </form>
+                  <form class="filter-search-form">
+                    <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+                        <div class="input-group">
+                          <input type="search" placeholder="Search by Language" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+                          <div class="input-group-append">
+                            <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                  </form>
+                  <form class="filter-search-form">
+                    <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+                        <div class="input-group">
+                          <input type="search" placeholder="Search by Published year" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+                          <div class="input-group-append">
+                            <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                  </form>
+        </div>
+    </div>
+</main>
+</body>
+</html>
