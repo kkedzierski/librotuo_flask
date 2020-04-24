@@ -22,7 +22,7 @@
                     <a class="navbar-brand" href="/">
                         <img id="navLogo" src="/static/images/logo_orginal.png" alt="Logo"> 
                     </a>
-                    <a class="navbar-brand" href="/">Librotuo</a>
+                    <a class="navbar-brand" href="{{ url_for('home') }}">Librotuo</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -30,11 +30,11 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/">
+                            <a class="nav-link" href="{{ url_for('home') }}">
                                 <i class="fa fa-book"></i>  Books
                             </a>
                         </li>
-                        <a class="nav-item nav-link mr-4" href="/about">
+                        <a class="nav-item nav-link mr-4" href="{{ url_for('about') }}">
                             <i class="fa fa-info-circle"></i> About
                         </a>
                         <form class="form-inline">
@@ -44,10 +44,10 @@
                     </ul>
                         <!-- Right menu -->
                     <div class="navbar-nav">
-                        <a class="nav-item nav-link" href="/login">
+                        <a class="nav-item nav-link" href="{{ url_for('login') }}">
                             <i class="fa fa-user"></i> Login
                         </a>
-                        <a class="nav-link" href="/register">
+                        <a class="nav-link" href="{{ url_for('register') }}">
                             <i class="fa fa-sign-in"></i> Sign up
                         </a>
                     </div>
@@ -62,7 +62,7 @@
             {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
                     {% for category, message in messages %}
-                        <div class="alert alert-{{ catergory }} ">
+                        <div class="alert alert-{{ category }}" role="alert">
                             {{ message }}
                         </div>
                     {% endfor %}
