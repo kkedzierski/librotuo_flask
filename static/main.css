@@ -1,8 +1,9 @@
 /* Background pattern from Toptal Subtle Patterns */
 body{
     background-image: url('/static/images/background.png');
+    margin-top: 5rem;
+    font-family: 'Montserrat', sans-serif;
 }
-
 
 #navLogo{
     margin-top: -10px;
@@ -26,72 +27,84 @@ h1, h2, h3, h4, h5, h6 {
     color: #444444;
   }
   
-  .bg-steel {
+.bg-steel {
     background-color: #5f788a;
-  }
+}
+
+.site-header .navbar-brand{
+  color: #cbd5db;
+}
   
-  .site-header .navbar-nav .nav-link {
+.site-header .navbar-nav .nav-link .navbar-brand {
     color: #cbd5db;
-  }
+}
   
-  .site-header .navbar-nav .nav-link:hover {
+.site-header .navbar-nav .nav-link:hover {
     color: #ffffff;
-  }
+}
   
-  .site-header .navbar-nav .nav-link.active {
+.site-header .navbar-nav .nav-link.active {
     font-weight: 500;
-  }
+}
   
-  .content-section {
-    background: #ffffff;
-    padding: 10px, 10px;
-    border: 1px solid #dddddd;
-    margin: 14px;
-  }
+.content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  margin-bottom: 20px;
+}
+
+.book-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  margin: 12px;
+  border: 1px solid #dddddd;
+  margin-bottom: 20px;
+}
+
+.article-title {
+  color: #444444;
+}
   
-  .article-title {
-    color: #444444;
-  }
+a.article-title:hover {
+  color: #428bca;
+  text-decoration: none;
+}
   
-  a.article-title:hover {
-    color: #428bca;
-    text-decoration: none;
-  }
+.article-content {
+  white-space: pre-line;
+}
   
-  .article-content {
-    white-space: pre-line;
-  }
+.article-img {
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
+}
   
-  .article-img {
-    height: 65px;
-    width: 65px;
-    margin-right: 16px;
-  }
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3
+}
   
-  .article-metadata {
-    padding-bottom: 1px;
-    margin-bottom: 4px;
-    border-bottom: 1px solid #e3e3e3
-  }
+.article-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+}
   
-  .article-metadata a:hover {
-    color: #333;
-    text-decoration: none;
-  }
+.article-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
   
-  .article-svg {
-    width: 25px;
-    height: 25px;
-    vertical-align: middle;
-  }
+.account-img {
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
   
-  .account-img {
-    height: 125px;
-    width: 125px;
-    margin-right: 20px;
-    margin-bottom: 16px;
-  }
-  
-  .account-heading {
-    font-size: 2.5rem;
-  }
+.account-heading {
+  font-size: 2.5rem;
+}
