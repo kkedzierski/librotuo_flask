@@ -14,12 +14,14 @@ class User(db.Model, UserMixin):
     image_file = db.Column(db.String(20), nullable=False,
                            default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
-    # books = db.relationship('Book', backref='addedby', lazy=True)
+    books = db.relationship('Book', backref='addedby', lazy=True)
 
     def __repr__(self):
-        return "User({username}, {email}, {image_file})".format(username=self.username,
-                                                                email=self.email,
-                                                                image_file=self.image_file)
+        return "User({username}," \
+               "{email}," \
+               "{image_file})".format(username=self.username,
+                                      email=self.email,
+                                      image_file=self.image_file)
 
 
 class Book(db.Model):
@@ -29,9 +31,10 @@ class Book(db.Model):
     published_date = db.Column(db.String(12), nullable=True)
     ISBN_number = db.Column(db.String(300), nullable=True)
     page_number = db.Column(db.Integer, nullable=True)
-    cover_url = db.Column(db.String(120), nullable=True)
+    cover_url = db.Column(db.String(400), nullable=False,
+                          default="https://ibf.org/site_assets/img/placeholder-book-cover-default.png")
     publication_language = db.Column(db.String(20), nullable=True)
-    # user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
         return "Book({title}, {authors}, {page_number}, " \

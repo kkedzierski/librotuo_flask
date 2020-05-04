@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+    <form action="", method="POST">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">{{ legend }}</legend>
+            <!-- Title -->
+            <div class="form-group">
+                 {{ form.title.label(class="form-control-label") }}
+                 {% if form.title.errors %}
+                     {{ form.title(class="form-control form-control-lg is-invalid") }}
+                     <div class="invalid-feedback">
+                         {% for error in form.title.errors %}
+                             <span>{{ error }}</span>
+
+                         {% endfor %}
+                     </div>
+                 {% else %}
+                     {{ form.title(class="form-control form-control-lg") }}
+                 {% endif %}
+             </div>
+             <!-- Authors -->
+             <div class="form-group">
+                 {{ form.authors.label(class="form-control-label") }}
+                 {% if form.authors.errors %}
+                     {{ form.authors(class="form-control form-control-lg is-invalid") }}
+                     <div class="invalid-feedback">
+                         {% for error in form.authors.errors %}
+                             <span>{{ error }}</span>
+
+                         {% endfor %}
+                     </div>
+                 {% else %}
+                     {{ form.authors(class="form-control form-control-lg") }}
+                 {% endif %}
+             </div>
+             <!-- Published Date -->
+             <div class="form-group">
+                {{ form.published_date.label(class="form-control-label") }}
+                {% if form.published_date.errors %}
+                    {{ form.published_date(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        <span>Published date must be in format: yyyy-mm-dd</span>
+                    </div>
+                {% else %}
+                    {{ form.published_date(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <!-- ISBN number -->
+            <div class="form-group">
+                {{ form.ISBN_number.label(class="form-control-label") }}
+                {% if form.ISBN_number.errors %}
+                    {{ form.ISBN_number(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.ISBN_number.errors %}
+                            <span>{{ error }}</span>
+
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.ISBN_number(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <!-- Pages number -->
+            <div class="form-group">
+                {{ form.page_number.label(class="form-control-label") }}
+                {% if form.page_number.errors %}
+                    {{ form.page_number(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        <span>Page number must be a number</span>
+                    </div>
+                {% else %}
+                    {{ form.page_number(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <!-- Book cover -->
+            <div class="form-group">
+                {{ form.cover_url.label(class="form-control-label") }}
+                {% if form.cover_url.errors %}
+                    {{ form.cover_url(class="form-control-file date is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.cover_url.errors %}
+                            <span>{{ error }}</span>
+
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.cover_url(class="form-control-file") }}
+                {% endif %}
+            </div>
+            <!-- Book cover -->
+            <div class="form-group">
+                {{ form.publication_language.label(class="form-control-label") }}
+                {% if form.publication_language.errors %}
+                    {{ form.publication_language(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.publication_language.errors %}
+                            <span>{{ error }}</span>
+
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.publication_language(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form> 
+ </div>
+{% endblock content %}
