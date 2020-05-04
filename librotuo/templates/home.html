@@ -1,17 +1,23 @@
-{% extends 'layout.html' %}
+{% extends 'home_layout.html' %}
 {% block content %}
     <div class="row">
-    {% for post in posts %}
+    {% for book in books %}
     <article class="media book-section col-md-3">
         <div class="media-body">
           <div class="article-metadata">
-            <a class="mr-2" href="#">{{ post.author }}</a>
-            <small class="text-muted">{{ post.date_posted }}</small>
+            <h4><a class="mr-2" href="{{ url_for('book', book_id=book.id) }}">{{ book.title }}</a></h4>
+            <h6 class="article-title">{{ book.authors }}</h6>
           </div>
-          <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
-          <p class="article-content">{{ post.content }}</p>
+          <small class="">Publicated: {{ book.published_date}}</small>
+          <small class="">Language: {{ book.publication_language }}</small>
+          <a href="{{ url_for('book', book_id=book.id) }}">
+            <img src="{{ book.cover_url }}" width="150" height="200" alt="Book cover">
+          </a>
+          <small class="mt-2 text-muted">added by: {{ book.addedby.username }}</small>
         </div>
+        
       </article>
     {% endfor %}
+    
   </div>
 {% endblock content %}
