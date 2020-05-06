@@ -81,27 +81,27 @@
         <div class="col-md-4">
             <h3>Filter search</h3>
             <p class="text-muted">Search your book using filters</p>
-            <form class="form-inline mr-auto" method="GET" action="search">
+            <form class="form-inline mr-auto" method="POST" action="{{ url_for('search_book')}}">
                 <div class="md-form my-0 mb-2">
-                  <input class="form-control" type="text" placeholder="Search by Title" aria-label="Search">
+                    <input class="form-control" type="text" placeholder="Search by Title" aria-label="Search" name="title_input">
                     <button type="submit" class="btn btn-outline-primary"><i class="fa fa-search"></i></button>
                 </div>
               </form>
-              <form class="form-inline mr-auto">
+              <form class="form-inline mr-auto" method="POST" action="{{ url_for('search_book') }}">
                 <div class="md-form my-0 mb-2">
-                  <input class="form-control" type="text" placeholder="Search by Author Name" aria-label="Search">
+                  <input class="form-control" type="text" placeholder="Search by Author Name" aria-label="Search" name="authors_input">
                     <button type="submit" class="btn btn-outline-primary"><i class="fa fa-search"></i></button>
                 </div>
               </form>
-              <form class="form-inline mr-auto">
+              <form class="form-inline mr-auto" method="POST" action="{{ url_for('search_book') }}">
                 <div class="md-form my-0 mb-2">
-                  <input class="form-control" type="text" placeholder="Search by language" aria-label="Search">
+                  <input class="form-control" type="text" placeholder="Search by language" aria-label="Search" name="lang_input">
                     <button type="submit" class="btn btn-outline-primary"><i class="fa fa-search"></i></button>
                 </div>
               </form>
-              <form class="form-inline mr-auto">
+              <form class="form-inline mr-auto" method="POST" action="{{ url_for('search_book') }}">
                 <div class="md-form my-0 mb-2">
-                  <input class="form-control" type="text" placeholder="Search by publication date" aria-label="Search">
+                  <input class="form-control" type="text" placeholder="Search by publication date" aria-label="Search", name="publication_date_input">
                     <button type="submit" class="btn btn-outline-primary"><i class="fa fa-search"></i></button>
                 </div>
               </form>

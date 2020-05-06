@@ -169,3 +169,30 @@ def delete_book(book_id):
     db.session.commit()
     flash('Your book has been deleted!', 'success')
     return redirect(url_for('home'))
+
+
+@app.route('/search', methods=['POST', 'GET'])
+def search_book():
+    if request.method == 'POST':
+        if request.form.get('title_input'):
+            title = request.form.get('title_input').capitalize()
+            books = Book.query.filter_by(title=title).all()
+        if request.form.get('authors_input'):
+            authors = request.form.get('authors_input').capitalize()
+            books = Book.query.filter_by(authors=authors).all()
+        if request.form.get('lang_input'):
+            lang = request.form.get('lang_input')
+            books = Book.query.filter_by(publication_language=lang).all()
+        if request.form.get('publication_date_input'):
+            passed_date = request.form.get('publication_date_input')
+            if len(passed_date) == 4:
+                passed_date += '-01-01'
+            passed_date = datetime.strptime(passed_date, '%Y-%m-%d')
+            books = Book.query.filter(Book.published_date >= passed_date)
+        if books:
+            return render_template('home.html', books=books)
+        else:
+            flash('Book not found!', 'danger')
+            return redirect(url_for('home'))
+
+
