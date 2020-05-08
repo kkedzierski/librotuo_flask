@@ -2,7 +2,7 @@
 {% block content %}
     <div class="row">
     {% for book in books %}
-    <article class="media book-section col-md-3">
+    <article class="media book-section col">
         <div class="media-body">
           <div class="article-metadata">
             <h4><a class="mr-2" href="{{ url_for('book', book_id=book.id) }}">{{ book.title }}</a></h4>
