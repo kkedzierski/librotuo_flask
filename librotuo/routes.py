@@ -14,7 +14,8 @@ from datetime import datetime
 @app.route('/')
 @app.route('/home')
 def home():
-    books = Book.query.all()
+    page = request.args.get('page', 1, type=int)
+    books = Book.query.paginate(page=page, per_page=6)
     return render_template('home.html', books=books)
 
 
@@ -176,19 +177,19 @@ def search_book():
     if request.method == 'POST':
         if request.form.get('title_input'):
             title = request.form.get('title_input').capitalize()
-            books = Book.query.filter_by(title=title).all()
+            books = Book.query.filter(Book.title.contains(title)).paginate()
         if request.form.get('authors_input'):
             authors = request.form.get('authors_input').capitalize()
-            books = Book.query.filter_by(authors=authors).all()
+            books = Book.query.filter(Book.authors.contains(authors)).paginate()
         if request.form.get('lang_input'):
             lang = request.form.get('lang_input')
-            books = Book.query.filter_by(publication_language=lang).all()
+            books = Book.query.filter(Book.publication_language.contains(lang)).paginate()
         if request.form.get('publication_date_input'):
             passed_date = request.form.get('publication_date_input')
             if len(passed_date) == 4:
                 passed_date += '-01-01'
             passed_date = datetime.strptime(passed_date, '%Y-%m-%d')
-            books = Book.query.filter(Book.published_date >= passed_date)
+            books = Book.query.filter(Book.published_date >= passed_date).paginate()
         if books:
             return render_template('home.html', books=books)
         else:
@@ -196,3 +197,11 @@ def search_book():
             return redirect(url_for('home'))
 
 
+@app.route('/user/<string:username>')
+def user_books(username):
+    page = request.args.get('page', 1, type=int)
+    user = User.query.filter_by(username=username).first_or_404()
+    books = Book.query\
+        .filter_by(addedby=user)\
+        .paginate(page=page, per_page=6)
+    return render_template('user_books.html', books=books, user=user)

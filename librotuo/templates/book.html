@@ -15,7 +15,9 @@
               <a class="btn btn-secondary btn-sm m-1" href="{{ url_for('update_book', book_id=book.id)}}">Update</a>
               <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
           {% endif %}
-          <div class="m-4 badge badge-primary text-wrap">added to Librotuo by: {{ book.addedby.username }}</div>
+          <a href="{{ url_for('user_books', username=book.addedby.username) }}">
+            <div class="m-4 badge badge-primary text-wrap">added to Librotuo by: {{ book.addedby.username }}</div>
+          </a>
         </div>
   </div> 
 
