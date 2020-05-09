@@ -190,7 +190,7 @@ def search_book():
                 passed_date += '-01-01'
             passed_date = datetime.strptime(passed_date, '%Y-%m-%d')
             books = Book.query.filter(Book.published_date >= passed_date).paginate()
-        if books:
+        if books.items:
             return render_template('home.html', books=books)
         else:
             flash('Book not found!', 'danger')
