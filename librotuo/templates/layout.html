@@ -22,7 +22,7 @@
                     <a class="navbar-brand" href="/">
                         <img id="navLogo" src="/static/images/logo_orginal.png" alt="Logo"> 
                     </a>
-                    <a class="navbar-brand" href="{{ url_for('home') }}">Librotuo</a>
+                    <a class="navbar-brand" href="{{ url_for('main.home') }}">Librotuo</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -30,31 +30,31 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('home') }}">
+                            <a class="nav-link" href="{{ url_for('main.home') }}">
                                 <i class="fa fa-book"></i>  Books
                             </a>
                         </li>
-                        <a class="nav-item nav-link mr-4" href="{{ url_for('about') }}">
+                        <a class="nav-item nav-link mr-4" href="{{ url_for('main.about') }}">
                             <i class="fa fa-info-circle"></i> About
                         </a>
                     </ul>
                         <!-- Right menu -->
                     <div class="navbar-nav">
                         {% if current_user.is_authenticated %}
-                            <a class="new-item nav-link mr-2" href="{{ url_for('add_book') }}">
+                            <a class="new-item nav-link mr-2" href="{{ url_for('books.add_book') }}">
                                 <i class="fa fa-plus">Add book</i>
                             </a>
-                            <a class="nav-item nav-link mr-2" href="{{ url_for('account') }}">
+                            <a class="nav-item nav-link mr-2" href="{{ url_for('users.account') }}">
                                 <i class="fa fa-user"></i> Account
                             </a>
-                            <a class="nav-item nav-link" href="{{ url_for('logout') }}">
+                            <a class="nav-item nav-link" href="{{ url_for('users.logout') }}">
                                 <i class="fa fa-power-off"></i> Log out
                             </a>
                         {% else %}
-                        <a class="nav-item nav-link mr-2" href="{{ url_for('login') }}">
+                        <a class="nav-item nav-link mr-2" href="{{ url_for('users.login') }}">
                             <i class="fa fa-user"></i> Login
                       </a>
-                        <a class="nav-link" href="{{ url_for('register') }}">
+                        <a class="nav-link" href="{{ url_for('users.register') }}">
                             <i class="fa fa-sign-in"></i> Sign up
                         </a>
                         {% endif %}
