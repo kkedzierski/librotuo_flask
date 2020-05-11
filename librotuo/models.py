@@ -1,5 +1,6 @@
 from itsdangerous import TimedJSONWebSignatureSerializer as Serialzer
-from librotuo import db, login_manager, app
+from flask import current_app
+from librotuo import db, login_manager
 from flask_login import UserMixin
 
 
@@ -18,12 +19,12 @@ class User(db.Model, UserMixin):
     books = db.relationship('Book', backref='addedby', lazy=True)
 
     def get_reset_token(self, expires_sec=1800):
-        s = Serialzer(app.config['SECRET_KEY'], expires_sec)
+        s = Serialzer(current_app.config['SECRET_KEY'], expires_sec)
         return s.dumps({'user_id': self.id}).decode('utf-8')
 
     @staticmethod
     def verify_reset_token(token):
-        s = Serialzer(app.config['SECRET_KEY'])
+        s = Serialzer(current_app.config['SECRET_KEY'])
         try:
             user_id = s.loads(token)['user_id']
         except Exception:
@@ -46,7 +47,8 @@ class Book(db.Model):
     ISBN_number = db.Column(db.String(300), nullable=True)
     page_number = db.Column(db.Integer, nullable=True)
     cover_url = db.Column(db.String(400), nullable=False,
-                          default="https://ibf.org/site_assets/img/placeholder-book-cover-default.png")
+                          default="https://ibf.org/site_assets/img/" +
+                                  "placeholder-book-cover-default.png")
     publication_language = db.Column(db.String(20), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 

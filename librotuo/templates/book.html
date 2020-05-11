@@ -12,10 +12,10 @@
           <div class="text-muted">Number of pages: {{ book.page_number}}</div>
           <div class="text-muted">Publicated language: {{ book.publication_language }}</div>
           {% if book.addedby == current_user %}
-              <a class="btn btn-secondary btn-sm m-1" href="{{ url_for('update_book', book_id=book.id)}}">Update</a>
+              <a class="btn btn-secondary btn-sm m-1" href="{{ url_for('books.update_book', book_id=book.id)}}">Update</a>
               <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
           {% endif %}
-          <a href="{{ url_for('user_books', username=book.addedby.username) }}">
+          <a href="{{ url_for('users.user_books', username=book.addedby.username) }}">
             <div class="m-4 badge badge-primary text-wrap">added to Librotuo by: {{ book.addedby.username }}</div>
           </a>
         </div>
@@ -33,7 +33,7 @@
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <form action="{{ url_for('delete_book', book_id=book.id) }}" method="POST">
+            <form action="{{ url_for('books.delete_book', book_id=book.id) }}" method="POST">
                 <input class="btn btn-danger" value="Delete" type="submit">
             </form>
             </div>

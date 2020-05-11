@@ -2,9 +2,8 @@ from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
 from flask_login import current_user
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
-from wtforms import IntegerField, DateField
-from wtforms.validators import DataRequired, Length, Email, EqualTo
-from wtforms.validators import ValidationError
+from wtforms.validators import (DataRequired, Length, Email,
+                                EqualTo, ValidationError)
 from librotuo.models import User
 
 
@@ -59,17 +58,6 @@ class UpdateAccountForm(FlaskForm):
             if user:
                 raise ValidationError('Account with this email already exist. '
                                       'Choose another email')
-
-
-class BookForm(FlaskForm):
-    title = StringField('Title', validators=[DataRequired()])
-    authors = StringField('Authors', validators=[DataRequired()])
-    published_date = DateField('Published Date')
-    ISBN_number = StringField('ISBN number')
-    page_number = IntegerField('Pages number')
-    cover_url = StringField('Address url to Book cover, like https://..')
-    publication_language = StringField('publication language')
-    submit = SubmitField('Add')
 
 
 class RequestResetForm(FlaskForm):
