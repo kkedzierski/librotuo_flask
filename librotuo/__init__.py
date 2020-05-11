@@ -27,8 +27,10 @@ def create_app(config_class=Config):
     from librotuo.users.routes import users
     from librotuo.books.routes import books
     from librotuo.main.routes import main
+    from librotuo.errors.handlers import errors
     app.register_blueprint(users)
     app.register_blueprint(books)
     app.register_blueprint(main)
+    app.register_blueprint(errors)
 
     return app
