@@ -41,8 +41,11 @@
                         <!-- Right menu -->
                     <div class="navbar-nav">
                         {% if current_user.is_authenticated %}
+                            <a class="new-item nav-link mr-2" href="{{ url_for('books.search_book_from_google') }}">
+                                <i class="fa fa-plus-circle"> Add book from google</i>
+                            </a>
                             <a class="new-item nav-link mr-2" href="{{ url_for('books.add_book') }}">
-                                <i class="fa fa-plus">Add book</i>
+                                <i class="fa fa-plus"> Add book</i>
                             </a>
                             <a class="nav-item nav-link mr-2" href="{{ url_for('users.account') }}">
                                 <i class="fa fa-user"></i> Account

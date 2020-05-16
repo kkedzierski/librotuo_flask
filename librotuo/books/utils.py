@@ -2,6 +2,10 @@ import json
 from urllib.request import urlopen
 from librotuo.models import Book
 
+
+def get_url_from_form(url):
+    return url
+
 url = 'https://www.googleapis.com/books/v1/volumes?q=Hobbit'
 
 

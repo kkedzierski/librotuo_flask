@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="row">
+    {% for book in books %}
+    <article class="media book-section col">
+        <div class="media-body">
+          <div class="article-metadata">
+            <h4 class="mr-2">{{ book.title }}</h4>
+            <h6 class="article-title">{{ book.authors }}</h6>
+          </div>
+          <small class="">Publicated: {{ book.published_date}}</small>
+          <small class="">Language: {{ book.publication_language }}</small>
+            <img src="{{ book.cover_url }}" width="150" height="200" alt="Book cover">
+        </div>
+        <form class="btn-group btn-group-justified" action="{{ url_for('books.add_book_from_google', book_title = book.title)}}">
+          <button type="submit" class="btn btn-success m-1" href="#">Add</button>
+        </form>
+      </article>
+    {% endfor %}
+  </div>
+{% endblock content %}

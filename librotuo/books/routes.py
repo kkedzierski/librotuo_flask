@@ -5,11 +5,15 @@ from librotuo.books.forms import BookForm
 from librotuo.models import Book
 from flask_login import current_user, login_required
 from datetime import datetime
+from librotuo.books.utils import (create_new_book_from_api,
+                                  get_url_from_form,
+                                  create_books_from_api)
 
 from flask import Blueprint
 
 books = Blueprint('books', __name__)
 
+url = 'https://www.googleapis.com/books/v1/volumes?q=Hobbit'
 
 @books.route('/book/new', methods=['GET', 'POST'])
 @login_required
@@ -109,3 +113,16 @@ def search_book():
         else:
             flash('Book not found!', 'danger')
             return redirect(url_for('main.home'))
+
+
+@books.route('/search_book_from_google')
+@login_required
+def search_book_from_google():
+    books = create_books_from_api(url)
+    return render_template('search_book_from_google.html', books=books)
+
+
+@books.route('/add_book_from_google/<book_title>', methods=['GET', 'POST'])
+@login_required
+def add_book_from_google(book_title):
+    return None
